@@ -6,11 +6,11 @@ function init() {
   gCanvas = document.getElementById('my-canvas');
   gCtx = gCanvas.getContext('2d');
 
-  // drawLine(10, 10, 130, 230)
+  drawLine(10, 10, 130, 230)
   // drawTriangle(50, 250)
   // drawRect(250, 30)
   // clearCanvas()
-  drawArc(330, 310);
+  // drawArc(330, 310);
   // drawText('HOLA!', 10, 50)
   // saveAndRestoreExample()
   // drawImg()
@@ -29,11 +29,9 @@ function init() {
 }
 
 function drawLine(x, y, xEnd = 250, yEnd = 250) {
-  gCtx.beginPath();
   gCtx.lineWidth = 2;
   gCtx.moveTo(x, y);
   gCtx.lineTo(xEnd, yEnd);
-  gCtx.closePath();
   gCtx.strokeStyle = 'red';
   gCtx.stroke();
 }
@@ -55,7 +53,7 @@ function drawTriangle(x, y) {
 
 function drawRect(x, y) {
   gCtx.beginPath();
-  gCtx.rect(x, y, 150, 150);
+  gCtx.rect(x, y, 150, 150);//x,y the top left corner of the rect
   gCtx.fillStyle = 'orange';
   gCtx.fillRect(x, y, 150, 150);
   gCtx.strokeStyle = 'black';
@@ -147,7 +145,7 @@ function draw(ev) {
       drawRect(offsetX, offsetY);
       break;
     case 'text':
-      drawText('שלום', offsetX, offsetY);
+      drawText('Hello', offsetX, offsetY);
       break;
     case 'line':
       drawLine(offsetX, offsetY);
