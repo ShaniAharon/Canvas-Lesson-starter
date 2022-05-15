@@ -18,7 +18,7 @@ function onInit() {
 function renderCanvas() {
     gCtx.save()
     gCtx.fillStyle = "#ede5ff"
-    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height)
+    gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height)//clear canvas
     renderCircle()
     gCtx.restore()
 }
@@ -87,7 +87,7 @@ function getEvPos(ev) {
         y: ev.offsetY
     }
     if (gTouchEvs.includes(ev.type)) {
-        ev.preventDefault()
+        ev.preventDefault()//prevent from the mouse events to fire
         ev = ev.changedTouches[0]
         pos = {
             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,

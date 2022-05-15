@@ -6,7 +6,7 @@ function init() {
   gCanvas = document.getElementById('my-canvas');
   gCtx = gCanvas.getContext('2d');
 
-  drawLine(10, 10, 130, 230)
+  // drawLine(0, 0, 130, 230)
   // drawTriangle(50, 250)
   // drawRect(250, 30)
   // clearCanvas()
@@ -17,53 +17,53 @@ function init() {
   // drawImg2()
   // resizeCanvas()
 
-  //   window.addEventListener('resize', resizeCanvas)
-  //   window.addEventListener('resize', ()=>{
-  //       console.log('resized')
-  //       resizeCanvas()
-  //       // Debouncing?..
-  //       drawText('Nothing like a good stretch ' + Date.now(), 0, 225)
-  //    })
+  // window.addEventListener('resize', resizeCanvas)
+  // window.addEventListener('resize', () => {
+  //   console.log('resized')
+  //   resizeCanvas()
+  //   // Debouncing?..
+  //   drawText('Nothing like a good stretch ' + Date.now(), 0, 0)
+  // })
 
   // click on canvas
 }
 
 function drawLine(x, y, xEnd = 250, yEnd = 250) {
   gCtx.lineWidth = 2;
-  gCtx.moveTo(x, y);
+  gCtx.moveTo(x, y);//start 0,0
   gCtx.lineTo(xEnd, yEnd);
   gCtx.strokeStyle = 'red';
   gCtx.stroke();
 }
 
 function drawTriangle(x, y) {
-  gCtx.beginPath();
+  // gCtx.beginPath();
   gCtx.lineWidth = 2;
   gCtx.moveTo(x, y);
   gCtx.lineTo(130, 330);
   gCtx.lineTo(50, 370);
-  gCtx.closePath();
-  gCtx.lineTo(x, y);
+  gCtx.closePath(); // close the path between the two lines
+  // gCtx.lineTo(x, y);//close the path to the starting point
   gCtx.fillStyle = 'purple';
-  gCtx.fill();
+  gCtx.fill();//inner color
   gCtx.strokeStyle = 'blue';
-  gCtx.stroke();
-  gCtx.closePath();
+  gCtx.stroke();//outline 
+  // gCtx.closePath();//can close the path bewtween 2 lines or a semi shape
 }
 
 function drawRect(x, y) {
-  gCtx.beginPath();
+  gCtx.beginPath();//Call this method when you want to create a new path.
   gCtx.rect(x, y, 150, 150);//x,y the top left corner of the rect
   gCtx.fillStyle = 'orange';
   gCtx.fillRect(x, y, 150, 150);
-  gCtx.strokeStyle = 'black';
+  // gCtx.strokeStyle = 'black';
   gCtx.stroke();
 }
 
 function drawArc(x, y) {
   gCtx.beginPath();
   gCtx.lineWidth = 6;
-  gCtx.arc(x, y, 100, 0, 2 * Math.PI);
+  gCtx.arc(x, y, 50, 0, 2 * Math.PI);
   gCtx.strokeStyle = 'white';
   gCtx.stroke();
   gCtx.fillStyle = 'blue';
@@ -116,6 +116,7 @@ function drawImg2() {
 
 function downloadCanvas(elLink) {
   const data = gCanvas.toDataURL();
+  console.log('data', data);
   elLink.href = data;
   elLink.download = 'puki';
 }
@@ -123,7 +124,7 @@ function downloadCanvas(elLink) {
 function resizeCanvas() {
   var elContainer = document.querySelector('.canvas-container');
   // Note: changing the canvas dimension this way clears the canvas
-  gCanvas.width = elContainer.offsetWidth - 20;
+  gCanvas.width = elContainer.offsetWidth - 20; s
   // Unless needed, better keep height fixed.
   //   gCanvas.height = elContainer.offsetHeight
 }

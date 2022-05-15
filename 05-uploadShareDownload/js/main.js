@@ -29,7 +29,6 @@ function loadImageFromInput(ev, onImageReady) {
         // Render on canvas
         img.onload = onImageReady.bind(null, img)
         img.src = event.target.result
-        gImg = img
     }
     console.log('after');
     reader.readAsDataURL(ev.target.files[0])
